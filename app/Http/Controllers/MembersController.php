@@ -22,8 +22,8 @@ class MembersController extends Controller
     public function store(Request $request)
     {
         // get file real name
-        $cvName = $request->memberName." -CV- ".$request->file('memberCV')->getClientOriginalName();
-        $flazzName = $request->memberName." -FLAZZ- ".$request->file('memberFlazz')->getClientOriginalName();
+        $cvName = $request->memberFullName." -CV- ".$request->file('memberCV')->getClientOriginalName();
+        $flazzName = $request->membeFullName." -FLAZZ- ".$request->file('memberFlazz')->getClientOriginalName();
 
         // store file
         $request->file('memberCV')->storeAs('public/CV',$cvName);

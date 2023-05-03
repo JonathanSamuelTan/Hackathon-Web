@@ -11,7 +11,6 @@
 <body>
     <div class="navbar" id="navbar">
         <div class="navlogo">
-            {{-- <img src="./Logo Hackathon.png" width="140px"> --}}
             <img src="{{asset('assets/Logo Hackathon.png')}}" width="140px">
         </div>
         <div class="navmid">
@@ -288,13 +287,13 @@
         </div>
         <div class="border">
             <div class="regis">
-                <a href="#">Register Now</a>
+                <a href="/register">Register Now</a>
             </div>
         </div>
         <p class="blue">Ada sesuatu yang tidak kamu mengerti?</p>
         <p class="dapat">Dapatkan Guidebook Hackathon disini!</p>
         <div class="download">
-            <a href="#">Download</a>
+            <a href="{{route('downloadGuideBook')}}" target="_blank">Download</a>
         </div>
     </section>
     <section class="why">

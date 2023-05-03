@@ -25,11 +25,16 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/payment', [PaymentController::class, 'payment'])->name('payment');
     Route::post('/payment/{id}', [PaymentController::class, 'store'])->name('payment.store');
+    Route::get('create-leader', [LeaderController::class, 'create'])-> name('create-leader');
+    Route::post('store-leader', [LeaderController::class, 'store'])-> name('store-leader');
+    Route::get('/dashboard', [userDashboardController::class, 'show'])-> name('dashboard');
+    Route::get('create-member', [MembersController::class, 'create'])-> name('create-member');
+    Route::post('store-member', [MembersController::class, 'store'])-> name('store-member');
     Route::get('/leaders/{leader}/cv', [LeaderController::class, 'showCV'])->name('leaders.cv');
     Route::get('/leaders/{leader}/flazz', [LeaderController::class, 'showFlazz'])->name('leaders.flazz');
     Route::get('/members/{member}/cv', [MembersController::class, 'showCV'])->name('members.cv');
@@ -38,23 +43,18 @@ Route::middleware('auth')->group(function () {
     
 });
 
-Route::get('create-leader', [LeaderController::class, 'create'])-> name('create-leader')
--> middleware('auth');
+Route::get('/downloadGuideBook', [userDashboardController::class, 'downloadGuideBook'])->name('downloadGuideBook');
 
-Route::post('store-leader', [LeaderController::class, 'store'])-> name('store-leader')
--> middleware('auth');
 
-Route::get('/dashboard', [userDashboardController::class, 'show'])->middleware(['auth', 'verified'])
--> name('dashboard')
--> middleware('auth');
+Route::get('create-leader', [LeaderController::class, 'create'])-> name('create-leader');
 
-Route::get('create-member', [MembersController::class, 'create'])
--> name('create-member')
--> middleware('auth');
+Route::post('store-leader', [LeaderController::class, 'store'])-> name('store-leader');
 
-Route::post('store-member', [MembersController::class, 'store'])
--> name('store-member')
--> middleware('auth');
+Route::get('/dashboard', [userDashboardController::class, 'show'])-> name('dashboard');
+
+Route::get('create-member', [MembersController::class, 'create'])-> name('create-member');
+
+Route::post('store-member', [MembersController::class, 'store'])-> name('store-member');
 
 // route for admin dashboard
 Route::get('admin-dashboard', [adminController::class, 'index']);

@@ -68,7 +68,7 @@
     position: relative;
     width: 1150px;
     height: 89px;
-    left: 130px;
+    left: 200px;
     top: 200px;
 
     font-family: 'Audiowide';
@@ -88,7 +88,7 @@
     position: absolute;
     width: 600px;
     height: 38px;
-    left: 366px;
+    left: 436px;
     top: 310px;
 
     font-family: 'Audiowide';
@@ -410,7 +410,7 @@
     top: 2240px;
     width: 50vw;
     justify-content: center;
-    left: 320px;
+    left: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -420,7 +420,7 @@
 
 .regis{
     position: relative;
-    left: 560px;
+    left: 650px;
     top: 2300px;
     justify-content: center;
     display: flex;
@@ -470,7 +470,7 @@
 }
 
 .download{
-    left: 560px;
+    left: 650px;
     justify-content: center;
     display: flex;
     padding: 4px 15px;
@@ -704,7 +704,7 @@
     position: relative;
     top: 58px;
     justify-content: flex-end;
-    right: 412px;
+    right: 480px;
     gap: 10px;
 }
 
@@ -724,7 +724,7 @@
     position: relative;
     top: 31px;
     justify-content: flex-end;
-    right: 140px;
+    right: 160px;
     gap: 10px;
 }
 
