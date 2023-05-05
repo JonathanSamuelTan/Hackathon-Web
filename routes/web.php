@@ -20,14 +20,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// route for guess
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/downloadGuideBook', [userDashboardController::class, 'downloadGuideBook'])->name('downloadGuideBook');
+Route::get('create-leader', [LeaderController::class, 'create'])-> name('create-leader');
+Route::post('store-leader', [LeaderController::class, 'store'])-> name('store-leader');
+Route::get('/downloadGuideBook', [userDashboardController::class, 'downloadGuideBook'])->name('downloadGuideBook');
+
+
+// route for registered user
 Route::middleware('auth')->group(function () {
-    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/payment', [PaymentController::class, 'payment'])->name('payment');
     Route::post('/payment/{id}', [PaymentController::class, 'store'])->name('payment.store');
     Route::get('create-leader', [LeaderController::class, 'create'])-> name('create-leader');
@@ -43,27 +51,15 @@ Route::middleware('auth')->group(function () {
     
 });
 
-Route::get('/downloadGuideBook', [userDashboardController::class, 'downloadGuideBook'])->name('downloadGuideBook');
+// route for admin
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('admin-dashboard', [adminController::class, 'index'])->name('admin-dashboard');
+    Route::get('group-detail/{id}', [adminController::class, 'show'])->name('group-detail');
+});
 
-
-Route::get('create-leader', [LeaderController::class, 'create'])-> name('create-leader');
-
-Route::post('store-leader', [LeaderController::class, 'store'])-> name('store-leader');
-
-Route::get('/dashboard', [userDashboardController::class, 'show'])-> name('dashboard');
-
-Route::get('create-member', [MembersController::class, 'create'])-> name('create-member');
-
-Route::post('store-member', [MembersController::class, 'store'])-> name('store-member');
-
-// route for admin dashboard
-Route::get('admin-dashboard', [adminController::class, 'index']);
-
-// route for admin get spesific data base on user id
-Route::get('group-detail/{id}', [adminController::class, 'show']);
 
 //route for logout
 Route::get('logout', [adminController::class, 'logout'])->name('logout');
 require __DIR__.'/auth.php';
 
-//route for register
+

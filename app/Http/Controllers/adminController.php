@@ -13,8 +13,9 @@ class adminController extends Controller
     //display all users
     public function index()
     {
-        $users = User::all();
-        return view('adminDashboard', compact('users'));
+        // compact all user where 'isAdmin == 0'
+        $teams = User::where('isAdmin', 0)->get();
+        return view('adminDashboard', compact('teams'));
     }
 
     //get spesific data from each user

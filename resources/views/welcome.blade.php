@@ -23,9 +23,16 @@
 
         @if (Auth::check())
             <div class="navright-container">
-                <div class="navright">
-                    <a href="/dashboard">Dashboard</a>
-                </div>
+                {{-- if isAdmin, give admin panel button --}}
+                @if (Auth::user()->isAdmin)
+                    <div class="navright">
+                        <a href="/admin-dashboard">Admin Panel</a>
+                    </div>
+                @else
+                    <div class="navright">
+                        <a href="/dashboard">Dashboard</a>
+                    </div>
+                @endif
                 <div class="navright">
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
