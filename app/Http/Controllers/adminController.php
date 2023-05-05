@@ -36,12 +36,25 @@ class adminController extends Controller
         return redirect('/admin-dashboard');
     }
 
-    public function verify($id)
+   
+    // public function updateStatus(Request $request, $id)
+    // {
+    //     $user = User::find($id);
+    //     $user->status = $request->status;
+    //     $user->save();
+
+    //     return redirect('/admin-dashboard');
+    // }
+
+    public function showInvoice(User $user)
     {
-        $user = User::find($id);
-
-        $user->update(['verified' => true]);
-
-        return redirect('/admin-dashboard')->with('Success', 'User Verified');
+        $invoicePath = storage_path('app/public/Invoice/' . $user->invoice);
+        $extension = pathinfo($invoicePath, PATHINFO_EXTENSION);
+        $headers = [
+            'Content-Type' => 'image/'.$extension,
+        ];
+        return response()->file($invoicePath, $headers);
     }
+
+
 }

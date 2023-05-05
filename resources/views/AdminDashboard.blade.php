@@ -74,10 +74,12 @@
 
                         {{-- status --}}
                         <td>
-                            @if($team->verified == 0)
-                                <span class="badge bg-danger">Not Verified</span>
+                            @if($team->verified == "rejected")
+                                <span class="badge bg-danger">Rejected</span>
+                            @elseif($team->verified == "accepted")
+                                <span class="badge bg-success">Accepted</span>
                             @else
-                                <span class="badge bg-success">Verified</span>
+                                <span class="badge bg-warning text-dark">Pending</span>
                             @endif
                         </td>
 
@@ -86,14 +88,24 @@
                             @if($team->invoice == Null)
                                 <span class="badge bg-danger">Not Paid</span>
                             @else
-                                <span class="badge bg-success">Paid</span>
+                            <a class="btn btn-info" role="button" href="{{ route('team.invoice', ['user' => $team->id]) }}" target="_blank">View Invoice</a>
+
                             @endif
                         </td>
 
                         {{-- action --}}
                         <td>
-                            <a href="#" class="btn btn-primary">Verify</a>
-                            <a href="#" class="btn btn-warning">Denied</a>
+                            {{-- form for update status --}}
+                            {{-- <form action="{{route('invoice.update-status',$team->id)}}" method="POST">
+                                @method('PATCH')
+                                @csrf
+                                <select name="status" id="status">
+                                    <option value="pending">Pending</option>
+                                    <option value="accepted">Accepted</option>
+                                    <option value="rejected">Rejected</option>
+                                </select>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </form> --}}
                         </td>
                       </tr>
                         @php

@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('password');
             $table->boolean('binusian');
-            $table->boolean('verified')->default(false);
+            // verified must be like (review, accepted, rejected)
+            $table->string('status')->default("review");
             $table->boolean('isAdmin')->default(false);
             $table->string('NoRek')->nullable();
             $table->string('bank')->nullable();

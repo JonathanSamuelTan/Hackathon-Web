@@ -147,7 +147,7 @@
                         </div>
                         <div class="bagi-dua">
                             <label for="Tanggal-Lahir">Tanggal Lahir</label>
-                            <input type="date" name="birthDate" id="Tanggal-Lahir" oninput="CheckDate()">
+                            <input type="date" name="birthDate" id="Tanggal-Lahir" oninput="CheckDate()" required>
                             <div class="hide" id="date">You must be atleast 17 years old!</div>
                         </div>
                     </div>
@@ -155,13 +155,13 @@
                         <div class="bagi-dua">
                             <label for="CV">Curriculum Vitae</label>
                             <div class="drag-drop">
-                                <input type="file" class="dropzone-input" id="Curriculum-Vitae" name="memberCV">
+                                <input type="file" class="dropzone-input" id="Curriculum-Vitae" name="memberCV" required>
                             </div>
                         </div>
                         <div class="bagi-dua CV">
                             <label for="FlazzCard">Flazz Card / ID Card</label>
                             <div class="drag-drop1">
-                                <input type="file" class="dropzone-input1" id="Flazz/ID" name="memberFlazz" >
+                                <input type="file" class="dropzone-input1" id="Flazz/ID" name="memberFlazz" required >
                             </div>
                         </div>
                     </div>

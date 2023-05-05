@@ -155,13 +155,13 @@
                         <div class="bagi-dua">
                             <label for="CV">Curriculum Vitae</label>
                             <div class="drag-drop">
-                                <input type="file" class="CV-1" id="Curriculum-Vitae" name="leaderCV">
+                                <input type="file" class="CV-1" id="Curriculum-Vitae" name="leaderCV" required>
                             </div>
                         </div>
                         <div class="bagi-dua CV">
                             <label for="FlazzCard">Flazz Card / ID Card</label>
                             <div class="drag-drop1">
-                                <input type="file" class="dropzone-input1" id="Flazz/ID" name="leaderFlazz">
+                                <input type="file" class="dropzone-input1" id="Flazz/ID" name="leaderFlazz" required>
                             </div>
                         </div>
                     </div>

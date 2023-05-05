@@ -131,17 +131,22 @@
                     @endforeach
                 </div>
                 <div class="divider">
-                    @if(Auth::user()->verified == 1)
+                    @if(Auth::user()->status == "accepted")
                         <div class="box2" style="border: 1px solid green;">
                             <iconify-icon icon="bi:check-circle-fill" style="color: green;" width="33.59" height="33.59"></iconify-icon>
                             <p style="color: green;">Your payment is confirmed</p>
                         </div>
-                    @else
+                    @elseif(Auth::user()->status == "rejected")
                         <div class="box2" style="border: 1px solid #FF0000;">  
                             <iconify-icon icon="radix-icons:cross-circled" style="color: red;" width="33.59" height="33.59"></iconify-icon>
-                            <p style="color: #FF0000;">Your payment is not confirmed</p>
+                            <p style="color: #FF0000;">Your payment is rejected</p>
                         </div>
-                     @endif
+                    @else
+                        <div class="box2" style="border: 1px solid  orange;">  
+                            <iconify-icon icon="basil:sand-watch-solid" style="color: orange;" width="33.59" height="33.59"></iconify-icon>
+                            <p style="color: orange;">Your payment is in review</p>
+                        </div>
+                    @endif
                 </div>
                 </section>
         </section>
