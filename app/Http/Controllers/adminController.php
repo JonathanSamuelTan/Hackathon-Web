@@ -37,14 +37,14 @@ class adminController extends Controller
     }
 
    
-    // public function updateStatus(Request $request, $id)
-    // {
-    //     $user = User::find($id);
-    //     $user->status = $request->status;
-    //     $user->save();
+    public function updateStatus(Request $request, $id)
+    {
+        User::where('id', $id)->update([
+            'status' => $request->status
+        ]);
 
-    //     return redirect('/admin-dashboard');
-    // }
+        return redirect('/admin-dashboard');
+    }
 
     public function showInvoice(User $user)
     {

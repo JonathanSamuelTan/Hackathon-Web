@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{user}/invoice', [adminController::class, 'showInvoice'])->name('team.invoice');
     
     // update verify status
-    // Route::patch('/update-status/{id}', [adminController::class, 'updateStatus'])->name('invoice.update-status');
+    Route::patch('update-status/{id}', [adminController::class, 'updateStatus'])->name('invoice.update-status');
 
     
 });

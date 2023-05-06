@@ -28,6 +28,7 @@
                                          this.closest('form').submit();">
                             {{ __('Log Out') }}
                       </a>
+                    </form>
                 </div>
             </div>
         </section>
@@ -74,9 +75,9 @@
 
                         {{-- status --}}
                         <td>
-                            @if($team->verified == "rejected")
+                            @if($team->status == "rejected")
                                 <span class="badge bg-danger">Rejected</span>
-                            @elseif($team->verified == "accepted")
+                            @elseif($team->status == "accepted")
                                 <span class="badge bg-success">Accepted</span>
                             @else
                                 <span class="badge bg-warning text-dark">Pending</span>
@@ -96,16 +97,18 @@
                         {{-- action --}}
                         <td>
                             {{-- form for update status --}}
-                            {{-- <form action="{{route('invoice.update-status',$team->id)}}" method="POST">
+                            <form action="{{route('invoice.update-status',$team->id)}}" method="POST">
                                 @method('PATCH')
                                 @csrf
+                                
                                 <select name="status" id="status">
-                                    <option value="pending">Pending</option>
-                                    <option value="accepted">Accepted</option>
-                                    <option value="rejected">Rejected</option>
+                                    // if status is pending, then option pending is selected
+                                    <option value="pending" {{ $team->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                                    <option value="accepted" {{ $team->status == 'accepted' ? 'selected' : '' }}>Accepted</option>
+                                    <option value="rejected" {{ $team->status == 'rejected' ? 'selected' : '' }}>Rejected</option>
                                 </select>
                                 <button type="submit" class="btn btn-primary">Update</button>
-                            </form> --}}
+                            </form>
                         </td>
                       </tr>
                         @php
